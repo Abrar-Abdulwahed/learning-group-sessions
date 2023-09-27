@@ -1,4 +1,4 @@
-//! Base prototype
+//! Top-level of the prototype hierarchy.
 Object.prototype
 
 //! Prototype Chain
@@ -30,6 +30,7 @@ const square2 = {
 };
 
 //METHOD 3: (with constructor function): rectangle is square's prototype
+//Constructor Function
 function Rectangle() {
     this.numberOfSides = 4;
     this.shape = "closed";
@@ -37,7 +38,8 @@ function Rectangle() {
 Rectangle.prototype.area = function(){};
 Rectangle.prototype.perimeter = function(){};
 const square3 = new Rectangle();
-
+//new.target
+//hasInstance
 
 //! WHY prototype?
 //? WHY NOT following:
@@ -53,6 +55,7 @@ const square4 = new Rectangle();
 console.log(Rectangle.prototype); // object
 console.log(square3.prototype); // undefined
 console.log(square3.__proto__); // object
+
 
 console.log(typeof Rectangle.prototype); // object
 console.log(typeof square3.__proto__); // object

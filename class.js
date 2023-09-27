@@ -1,32 +1,48 @@
-class Animal {
+//METHOD 1: class declaration
+class Rectangle {
     constructor(){
-        this.name = 'Elephant';
+        this.numberOfSides = 4;
+        this.shape = "closed";
     }
-    sleep() {}
-    eat() {}
-    talk() {}
+    area() {}
+    perimeter() {}
 }
-const animalObj = new Animal();
-console.log(animalObj.name); //Elephant
+const rect = new Rectangle();
+console.log(rect.shape); //closed
 
-//! Inheritance
-class Person {
-    constructor(name, age, hairColor){
-        this.name = name;
-        this.age = age;
-        this.sayName = () => `My name is ${this.name}`;
+//METHOD 2: class expression
+//unnamed expression
+const Rectangle = class {
+    //...
+};
+
+//named expression
+let Shape = class Rectangle {
+    //...
+};
+
+//! static
+class Rectangle {
+    constructor(side) {
+        this.side = side;
+    }
+    computePerimeter() {
+        return 4 * this.side;
+    }
+    static greeting() {
+        console.log('Welcome Everybody!')
+    }
+    static comparePerimeter(square1, square2) {
+        if (rect1.side > rect2.side) {
+            console.log("First rectangle has more perimeter");
+        } else if (rect1.side < rect2.side) {
+            console.log("Second rectangle has more perimeter");
+        } else {
+            console.log("Both have same perimeter");
+        }
     }
 }
-class Teacher extends Person {
-    constructor(name, subject, salary){
-        super(name)
-        this.subject = subject;
-        this.salary = salary;
-    }
-    doGrading(){
-        console.log(`You get an A+ in ${this.subject}`);
-    }
-}
-const myTeacher = new Teacher('Mark', 'history', '6000$');
-console.log(myTeacher.subject); // history
-myTeacher.sayName(); // My name is Mark
+const rect1 = new Rectangle(3);
+const rect2 = new Rectangle(7);
+Square.greeting();
+Square.comparePerimeter(rect1, rect2);

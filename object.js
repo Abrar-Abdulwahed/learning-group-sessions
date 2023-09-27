@@ -24,11 +24,11 @@ const studentShort = {
 const obj = new Object(); // === const obj = {} === const obj = Object.create(Object.prototype);
 const arr = new Array();  // === const arr = [];
 const date = new Date();
+//Boolean(), Number()
 
 
 
 //METHOD 3: `new` keyword with user-defined constructor
-//METHOD 3.1: constructor function
 function Person () {
     this.name = 'Abrar'
 }
@@ -47,10 +47,10 @@ plainObj['a b'] = "ab letters"
 
 //METHOD 3.1: computed Property Names: Expression Evaluated at run time then converted to string
 const PROPERTY_NAME = 10 + 20;
-function computePropertyName() { return "p" + 2; }
+function computePropertyName() { return "p" + 2; } // p2
 let computed = {};
-computed[PROPERTY_NAME] = 1; // computed['30']
-computed[computePropertyName()] = 2;
+computed[PROPERTY_NAME] = 1; // computed['30'] = 1
+computed[computePropertyName()] = 2; //computed['p2'] = 2
 
 //! Access properties
 //METHOD 1: dot notation, (.) operator --> Simple Identifier
@@ -60,7 +60,7 @@ console.log(computed[PROPERTY_NAME])
 
 //TODO: what is the output?
 let a ={}, b= {key:'b'}, c= {key:'c'};
-a[b]=10;
-a[c]=200;
-console.log(a[b]);
+a[b]=10; // a['[object Object]'] = 10;
+a[c]=200; // a['[object Object]'] = 200; =>overwrite
+console.log(a[b]); //200
 
