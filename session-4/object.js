@@ -52,7 +52,7 @@ let computed = {};
 computed[PROPERTY_NAME] = 1; // computed['30'] = 1
 computed[computePropertyName()] = 2; //computed['p2'] = 2
 
-//METHOD 4: spread operator
+//METHOD 3: spread operator
 const first = {a: "1"};
 const second = {b: "2"};
 const all = {...first, ...second}
