@@ -51,7 +51,7 @@ function Rectangle() {
 }
 const square4 = new Rectangle();
 
-//! Difference between prototype & __proto__
+//! prototype & __proto__
 console.log(Rectangle.prototype); // object
 console.log(square3.prototype); // undefined
 console.log(square3.__proto__); // object

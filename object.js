@@ -41,16 +41,21 @@ const plainObj = {};
 plainObj.a = 'first letter';
 console.log(plainObj);
 
-//METHOD 3: array notation
-//METHOD 3.1: literal string
+//METHOD 2: array notation
+//METHOD 2.1: literal string
 plainObj['a b'] = "ab letters"
 
-//METHOD 3.1: computed Property Names: Expression Evaluated at run time then converted to string
+//METHOD 2.2: computed Property Names: Expression Evaluated at run time then converted to string
 const PROPERTY_NAME = 10 + 20;
 function computePropertyName() { return "p" + 2; } // p2
 let computed = {};
 computed[PROPERTY_NAME] = 1; // computed['30'] = 1
 computed[computePropertyName()] = 2; //computed['p2'] = 2
+
+//METHOD 4: spread operator
+const first = {a: "1"};
+const second = {b: "2"};
+const all = {...first, ...second}
 
 //! Access properties
 //METHOD 1: dot notation, (.) operator --> Simple Identifier
