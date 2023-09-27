@@ -44,8 +44,8 @@ const square3 = new Rectangle();
 function Rectangle() {
     this.numberOfSides = 4;
     this.shape = "closed";
-    this.area = function(){},
-    this.perimeter = function(){}
+    this.area = function(){};
+    this.perimeter = function(){};
 }
 const square4 = new Rectangle();
 
