@@ -1,58 +1,60 @@
 //! Base prototype
 Object.prototype
 
-//! Prototype Chain - Prototypal Inheritance
-// Example 1:
+//! Prototype Chain
 const arr = [];
 
-// Example 2(with object Literal): pet is fish's prototype
-const pet = { activity: "walking"}
-const fish = Object.create(pet); // create empty object and inherit pet prototype
-console.log(fish); // do in session the delegating on inherited prototype
-fish.activity = "swimming"
-console.log(fish)
+//! Prototype Chain - Prototypal Inheritance
+// show in session delegating on inherited prototype vs hasOwnProperty
 
-// Example 3(with constructor function): pet is fish's prototype
-function Pet() {
-    this.activity = 'walking';
+//METHOD 1: Object.create(prototype)
+const rectanglePrototype1 = {
+    numberOfSides: 4,
+    shape: "closed",
+    area() {},
+    perimeter() {}
 }
-const fish = new Pet();
-console.log(fish); // do in session the delegating on inherited prototype
-fish.activity = "swimming"
-console.log(fish)
+const square1 = Object.create(rectanglePrototype1);
+square1.sideLength = "40cm"
+
+//METHOD 2: obj.__proto__ = prototype
+const rectanglePrototype2 = {
+    numberOfSides: 4,
+    shape: "closed",
+    area() {},
+    perimeter() {}
+}
+const square2 = {
+    sideLength: "40cm",
+    __proto__: rectanglePrototype2
+};
+
+//METHOD 3: (with constructor function): rectangle is square's prototype
+function Rectangle() {
+    this.numberOfSides = 4;
+    this.shape = "closed";
+}
+Rectangle.prototype.area = function(){};
+Rectangle.prototype.perimeter = function(){};
+const square3 = new Rectangle();
 
 
 //! WHY prototype?
-function Animal(){
-    this.name = 'Elephant'
-
-    // Behaviors
-    this.sleep = function(){};
-    this.eat = function(){};
-    this.talk = function(){};
+//? WHY NOT following:
+function Rectangle() {
+    this.numberOfSides = 4;
+    this.shape = "closed";
+    this.area = function(){},
+    this.perimeter = function(){}
 }
-
-// more performant way
-function Animal(){
-    this.name = 'Elephant'
-}
-
-// Shared Behaviors as prototypes
-Animal.prototype.sleep = function(){};
-Animal.prototype.eat = function(){};
-Animal.prototype.talk = function(){};
+const square4 = new Rectangle();
 
 //! Difference between prototype & __proto__
-function Pet() {
-    this.activity = 'walking';
-}
-const fish = new Pet();
+console.log(Rectangle.prototype); // object
+console.log(square3.prototype); // undefined
+console.log(square3.__proto__); // object
 
-console.log(Pet.prototype); // object
-console.log(fish.prototype); // undefined
-console.log(fish.__proto__); // object
+console.log(typeof Rectangle.prototype); // object
+console.log(typeof square3.__proto__); // object
 
-console.log(typeof Pet.prototype); // object
-console.log(typeof fish.__proto__); // object
-
-console.log(Pet.prototype === fish.__proto__ ); // true
+console.log(Rectangle.prototype === square3.__proto__ ); // true

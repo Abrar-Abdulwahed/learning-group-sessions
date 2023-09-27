@@ -48,7 +48,6 @@ plainObj['a b'] = "ab letters"
 //METHOD 3.1: computed Property Names: Expression Evaluated at run time then converted to string
 const PROPERTY_NAME = 10 + 20;
 function computePropertyName() { return "p" + 2; }
-
 let computed = {};
 computed[PROPERTY_NAME] = 1; // computed['30']
 computed[computePropertyName()] = 2;
